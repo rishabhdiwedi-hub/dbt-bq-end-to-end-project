@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: walmart
+    database: project-a43efffc-4342-40fc-a08
+    schema: wallmart
+
+    tables:
+      - name: customers
+      - name: orders
+      - name: employees
+      - name: products
+      - name: order_items
+      - name: stores
+
+  - name: walmart_silver
+    database: project-a43efffc-4342-40fc-a08
+    schema: walmart_silver
+
+    tables:
+      - name: silver_obt
+      - name: customers_t
+      - name: orders_t
+      - name: employees_t
+      - name: products_t
+      - name: order_items_t
+      - name: stores_t

@@ -1,0 +1,6 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+    "dbt.dbtPythonPathOverride": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+    "dbt.queryLimit": 500,
+    "dbt.perspectiveTheme": "Vintage"
+}

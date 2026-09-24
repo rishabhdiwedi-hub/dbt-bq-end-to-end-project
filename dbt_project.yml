@@ -1,0 +1,19 @@
+name: 'walmart_project'
+version: '1.0.0'
+
+profile: 'walmart_project'
+
+model-paths: ["walmart_project/models"]
+analysis-paths: ["walmart_project/analyses"]
+test-paths: ["walmart_project/tests"]
+seed-paths: ["walmart_project/seeds"]
+macro-paths: ["walmart_project/macros"]
+snapshot-paths: ["walmart_project/snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  walmart_project:
+    +materialized: view

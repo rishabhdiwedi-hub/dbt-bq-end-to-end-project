@@ -1,0 +1,18 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+dbt_internal_packages/
+
+# Local dbt configuration and generated artifacts
+profiles.yml
+.user.yml
+dbt_packages/
+logs/
+target/
