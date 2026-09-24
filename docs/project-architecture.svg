@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">dbt BigQuery Walmart project architecture</title>
+  <desc id="desc">Architecture diagram showing Walmart source data flowing through dbt silver technical models, a silver business OBT, gold models, and Airflow orchestration.</desc>
+  <defs>
+    <style>
+      .box { stroke: #1f2937; stroke-width: 2; rx: 14; ry: 14; }
+      .label { font: 600 20px Arial, sans-serif; fill: #111827; text-anchor: middle; }
+      .small { font: 16px Arial, sans-serif; fill: #374151; text-anchor: middle; }
+      .arrow { stroke: #4b5563; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .caption { font: 700 24px Arial, sans-serif; fill: #111827; text-anchor: middle; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#4b5563"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="720" fill="#ffffff"/>
+  <text x="600" y="42" class="caption">Walmart dbt + BigQuery end-to-end architecture</text>
+
+  <rect x="60" y="100" width="220" height="150" class="box" fill="#dbeafe"/>
+  <text x="170" y="140" class="label">BigQuery</text>
+  <text x="170" y="175" class="small">Raw Walmart sources</text>
+  <text x="170" y="204" class="small">customers · orders</text>
+  <text x="170" y="228" class="small">products · stores · items</text>
+
+  <rect x="350" y="100" width="220" height="150" class="box" fill="#dcfce7"/>
+  <text x="460" y="140" class="label">dbt Silver</text>
+  <text x="460" y="175" class="small">Incremental technical</text>
+  <text x="460" y="204" class="small">*_t models</text>
+  <text x="460" y="228" class="small">updated_timestamp watermark</text>
+
+  <rect x="640" y="100" width="220" height="150" class="box" fill="#fef3c7"/>
+  <text x="750" y="140" class="label">Silver business</text>
+  <text x="750" y="175" class="small">silver_obt</text>
+  <text x="750" y="204" class="small">Metadata-driven joins</text>
+  <text x="750" y="228" class="small">Order-level OBT</text>
+
+  <rect x="930" y="100" width="210" height="150" class="box" fill="#fce7f3"/>
+  <text x="1035" y="140" class="label">Gold</text>
+  <text x="1035" y="175" class="small">Ephemeral dimensions</text>
+  <text x="1035" y="204" class="small">fact_orders</text>
+  <text x="1035" y="228" class="small">Analytics-ready output</text>
+
+  <path d="M280 175 H350" class="arrow"/>
+  <path d="M570 175 H640" class="arrow"/>
+  <path d="M860 175 H930" class="arrow"/>
+
+  <rect x="235" y="370" width="730" height="190" class="box" fill="#ede9fe"/>
+  <text x="600" y="415" class="label">Apache Airflow + Docker Compose</text>
+  <text x="600" y="455" class="small">CDC placeholder → cleanup → source freshness</text>
+  <text x="600" y="485" class="small">→ silver run/test → OBT run/test → gold publication</text>
+  <text x="600" y="525" class="small">CeleryExecutor · Redis · PostgreSQL</text>
+
+  <path d="M170 250 V315 H400 V370" class="arrow"/>
+  <path d="M460 250 V370" class="arrow"/>
+  <path d="M750 250 V370" class="arrow"/>
+  <path d="M1035 250 V315 H800 V370" class="arrow"/>
+
+  <text x="600" y="635" class="small">Google Cloud authentication and a configured dbt BigQuery profile are required.</text>
+</svg>
